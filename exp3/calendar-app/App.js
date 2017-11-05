@@ -1,6 +1,7 @@
 import React from 'react';
-import {Navbar, Nav, NavItem, PageHeader} from 'react-bootstrap';
+import {Navbar, Nav, NavItem, PageHeader, Tabs, Tab} from 'react-bootstrap';
 import Tasks from './Tasks'
+// Attribution: Referred to react-bootstrap documentation
 
 class App extends React.Component {
 
@@ -19,9 +20,11 @@ class App extends React.Component {
 	            </Nav>
             </Navbar>
 
-
-
-            <Tasks />
+			<Tabs defaultActiveKey={1} animation={false} id="noanim-tab-example">
+				<Tab eventKey={1} title="Assigned Tasks"> <Tasks /></Tab>
+			    <Tab eventKey={2} title="Upcoming Week">Tab 2 content</Tab>
+			    <Tab eventKey={3} title="Calendar" disabled>Tab 3 content</Tab>
+			</Tabs>
 
          </div>
       );

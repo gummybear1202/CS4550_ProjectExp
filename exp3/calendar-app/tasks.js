@@ -3,22 +3,7 @@ import {PageHeader, Grid, Row, Col, Thumbnail, Button} from 'react-bootstrap';
 
 
 class Tasks extends React.Component {
-	contructor(props){
-		super(props);
 
-		this.state = {
-			completedShift = false,
-
-		};
-
-		this.onClick = this.onClick.bind(this);
-	}
-
-	onClick() {
-		this.setState({
-			completedShift = true,
-		});
-	}
 	render() {
       return (
       	<div>
