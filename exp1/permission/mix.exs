@@ -20,7 +20,8 @@ defmodule Permission.Mixfile do
   def application do
     [
       mod: {Permission.Application, []},
-      applications: [:logger, :oauth2, :runtime_tools]
+      extra_applications: [:logger, :oauth2,
+      :ueberauth_google, :runtime_tools]
     ]
   end
 
@@ -42,6 +43,7 @@ defmodule Permission.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:poison, "~> 3.1"},
+      {:ueberauth_google, "~> 0.5"},
       {:oauth2, "~> 0.9"}
     ]
   end
