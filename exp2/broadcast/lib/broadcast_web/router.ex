@@ -15,6 +15,9 @@ defmodule BroadcastWeb.Router do
 
   scope "/", BroadcastWeb do
     pipe_through :browser # Use the default browser stack
+    resources "/users", UserController
+    resources "/teams", TeamController    
+    resources "/broadcasts", BroadcastController
 
     get "/", PageController, :index
   end
