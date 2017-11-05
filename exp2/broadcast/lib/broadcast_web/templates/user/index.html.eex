@@ -19,7 +19,6 @@
       <td><%= user.last_name %></td>
       <td><%= user.email %></td>
       <td><%= user.isManager? %></td>
-      <td><%= user.isAdmin? %></td>
 
       <td class="text-right">
         <span><%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %></span>
