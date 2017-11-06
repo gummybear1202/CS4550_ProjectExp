@@ -1,29 +1,14 @@
-<h2>Listing Broadcasts</h2>
+<h2>Dashboard Messages</h2>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Desc</th>
+<div class="container">
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+  <div id="messages"> </div>
 <%= for broadcast <- @broadcasts do %>
-    <tr>
-      <td><%= broadcast.desc %></td>
-
-      <td class="text-right">
-        <span><%= link "Show", to: broadcast_path(@conn, :show, broadcast), class: "btn btn-default btn-xs" %></span>
-
-            <span><%= link "Edit", to: broadcast_path(@conn, :edit, broadcast), class: "btn btn-default btn-xs" %></span>
-            <span><%= link "Delete", to: broadcast_path(@conn, :delete, broadcast), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
- 
-
-      </td>
-    </tr>
+    <p>
+      <%= broadcast.desc %>
+    </p>
 <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
 <span><%= link "New Broadcast", to: broadcast_path(@conn, :new) %></span>

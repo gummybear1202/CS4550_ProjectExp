@@ -54,7 +54,41 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("topic:subtopic", {})
+let channel = socket.channel("updates:all", {})
+
+let messageContainer = $("#messages")
+
+var newPost = location.pathname.startsWith("/broadcasts/new")
+var posted = location.hash == "#newPost"
+
+let msgId
+let msgDesc
+let msgUser
+// using JS
+function resetHash() {
+	window.location.hash = "";
+}
+
+function inputKeyUp() {
+
+	if(newPost && posted) {
+		msgId = post_id
+		msgDesc = post_desc
+		msgUser = post_user
+		channel.push("new_msg", {id: msgId, desc: msgDesc, user_id: msgUser})
+		resetHash();
+	}
+
+}
+
+channel.on("new_msg", payload => {
+	let messageItem = `<p>${msgDesc}</p>`
+	messageContainer.prepend(messageItem)
+
+})
+
+$(inputKeyUp)
+
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })

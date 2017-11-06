@@ -7,6 +7,8 @@ defmodule BroadcastWeb.UserSocket do
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
   # transport :longpoll, Phoenix.Transports.LongPoll
+  channel "updates:lobby", BroadcastWeb.UpdatesChannel
+
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After

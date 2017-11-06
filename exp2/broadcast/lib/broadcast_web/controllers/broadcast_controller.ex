@@ -19,7 +19,7 @@ defmodule BroadcastWeb.BroadcastController do
       {:ok, broadcast} ->
         conn
         |> put_flash(:info, "Broadcast created successfully.")
-        |> redirect(to: broadcast_path(conn, :show, broadcast))
+        |> redirect(to: Enum.join([broadcast_path(conn, :show, broadcast),"#newPost"], ""))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
