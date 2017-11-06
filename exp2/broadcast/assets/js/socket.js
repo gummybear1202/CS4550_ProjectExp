@@ -74,7 +74,7 @@ function inputKeyUp() {
 		msgId = post_id
 		msgDesc = post_desc
 		msgUser = post_user
-		channel.push("new_msg", {id: msgId, desc: msgDesc, user_id: msgUser})
+		channel.push("new_msg", {id: msgId, desc: msgDesc, user_id: msgUser});
 		resetHash();
 	}
 
@@ -82,7 +82,7 @@ function inputKeyUp() {
 
 channel.on("new_msg", payload => {
 	console.log("AM I POSTING ON INDEX REALTIME?");
-	let messageItem = `<p>${payload.msgDesc}</p>`
+	let messageItem = `<p>${payload.desc}</p>`
 	messageContainer.prepend(messageItem)
 
 })
