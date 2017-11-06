@@ -8,14 +8,13 @@
     <meta name="author" content="">
 
     <title>Hello Broadcast!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-  </head>
+  <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">  </head>
 
 
 <body>
 
  <!-- Attribution: Nav bar from lecture code-->
- <nav class="navbar navbar-inverse">
+ <nav class="navbar navbar-dark bg-dark navbar-expand-md">
   <%= if @current_user do %>
   <a class="navbar-brand" href="/broadcasts">Manager App</a>
   <% else %>
@@ -51,7 +50,6 @@
  <%= form_for @conn, session_path(@conn, :login), 
  [as: "user", class: "form-inline w-75"], fn _f -> %>
  <input type="text" placeholder="email" class="form-control" name="email">
- <input type="password" placeholder="password" class="form-control" name="password">
  <input type="submit" value="Log in" class="btn btn-primary">
  <% end %>
  <% end %>
