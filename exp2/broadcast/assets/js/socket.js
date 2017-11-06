@@ -54,12 +54,11 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("updates:all", {})
-
-let messageContainer = $("#messages")
+let channel = socket.channel("updates:lobby", {})
 
 var newPost = location.pathname.startsWith("/broadcasts")
 var posted = location.hash == "#newPost"
+let messageContainer = $("#messages-index")
 
 let msgId
 let msgDesc
@@ -70,7 +69,7 @@ function resetHash() {
 }
 
 function inputKeyUp() {
-
+	console.log("New post!!!!");
 	if(newPost && posted) {
 		msgId = post_id
 		msgDesc = post_desc
@@ -82,7 +81,8 @@ function inputKeyUp() {
 }
 
 channel.on("new_msg", payload => {
-	let messageItem = `<p>${msgDesc}</p>`
+	console.log("AM I POSTING ON INDEX REALTIME?");
+	let messageItem = `<p>${payload.msgDesc}</p>`
 	messageContainer.prepend(messageItem)
 
 })

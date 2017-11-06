@@ -9,14 +9,14 @@
 
 <h2>Show Broadcast</h2>
 
-<ul>
+<div>
 
-  <li>
-    <strong>Desc:</strong>
+  <p>
+    <strong><%= @broadcast.user_id %> says: </strong>
     <%= @broadcast.desc %>
-  </li>
+  </p>
 
-</ul>
+</div>
 
 <span><%= link "Edit", to: broadcast_path(@conn, :edit, @broadcast) %></span>
 <span><%= link "Back", to: broadcast_path(@conn, :index) %></span>

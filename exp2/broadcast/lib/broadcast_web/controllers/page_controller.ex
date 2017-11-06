@@ -2,6 +2,6 @@ defmodule BroadcastWeb.PageController do
   use BroadcastWeb, :controller
 
   def index(conn, _params) do
-    render conn, "index.html"
+    redirect conn, to: broadcast_path(conn, :index)
   end
 end

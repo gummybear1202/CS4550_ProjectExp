@@ -26,10 +26,11 @@ defmodule BroadcastWeb.UpdatesChannel do
     {:noreply, socket}
   end
 
-  def handle_in("new_msg", %{"body" => body}, socket) do 
-    broadcast! socket, "new_msg", %{body: body}
+  def handle_in("new_msg", %{"id" => id, "desc" => desc, "user_id" => user_id}, socket) do 
+    broadcast! socket, "new_msg", %{"id" => id, "desc" => desc, "user_id" => user_id}
     {:noreply, socket}
   end 
+
   def handle_out("new_msg", payload, socket) do
     push socket, "new_msg", payload
     {:noreply, socket}
