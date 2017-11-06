@@ -30,14 +30,9 @@ defmodule BroadcastWeb.UpdatesChannel do
     broadcast! socket, "new_msg", %{body: body}
     {:noreply, socket}
   end 
-
-  def handle_out("received", msg, socket) do 
-    if Account.ignoring_user?(socket.assigns[:user], msg.user_id) do 
-      {:noreply, socket}
-    else
-      push socket, "received", msg 
-      {:noreply, socket}
-    end
+  def handle_out("new_msg", payload, socket) do
+    push socket, "new_msg", payload
+    {:noreply, socket}
   end
 
   # Add authorization logic here as required.

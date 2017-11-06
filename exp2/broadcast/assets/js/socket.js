@@ -58,7 +58,7 @@ let channel = socket.channel("updates:all", {})
 
 let messageContainer = $("#messages")
 
-var newPost = location.pathname.startsWith("/broadcasts/new")
+var newPost = location.pathname.startsWith("/broadcasts")
 var posted = location.hash == "#newPost"
 
 let msgId
