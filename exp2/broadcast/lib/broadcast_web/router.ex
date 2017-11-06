@@ -24,7 +24,7 @@ defmodule BroadcastWeb.Router do
     get "/", PageController, :index
 
     post "/sessions", SessionController, :login
-    post "/sessions", SessionController, :logout
+    delete "/sessions", SessionController, :logout
   end
 
   # Other scopes may use custom stacks.
