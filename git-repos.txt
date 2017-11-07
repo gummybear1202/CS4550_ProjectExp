@@ -1,0 +1,9 @@
+Github Repositories
+
+1. Experiment URL: https://github.com/gummybear1202/CS4550_ProjectExp
+	Each experiment is located in their own folder.
+	Experiment 1 (exp1) is the Google API OAuth experiement.
+	Experiment 2 (exp2) is the websocket experiement for team-wide broadcasts
+	Experiment 3 (exp3) is the ReactJS framework experiement for front end rendering of calendars.
+	
+2. Project URL: https://github.com/ChristineTChen/Manager
