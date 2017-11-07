@@ -40,6 +40,10 @@ defmodule Broadcast.Account do
   def get_user_by_email(email) do 
     Repo.get_by(User, email: email)
   end
+#select employee_id from teams where manager_id = id;
+  def get_users_by_manager(id) do 
+    Repo.get_by(Team, manager_id: id)
+  end
   @doc """
   Creates a user.
 

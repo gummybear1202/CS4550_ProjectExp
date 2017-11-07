@@ -6,16 +6,14 @@
     <table id="broadcast-index-container" class="table">
       <thead>
         <tr>
-          <th>Desc</th>
+          <th>Message</th>
 
-          <th>Id</th>
         </tr>
       </thead>
       <tbody>
         <%= for b <- @broadcasts do %>
         <tr>
           <td><%= b.desc %></td>
-          <td><%= b.user_id %></td>
         </tr>
         <% end %>
       </tbody>

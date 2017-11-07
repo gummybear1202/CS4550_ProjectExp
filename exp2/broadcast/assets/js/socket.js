@@ -58,12 +58,6 @@ let channel = socket.channel("updates:lobby", {})
 
 var newPost = location.pathname.startsWith("/broadcasts")
 var posted = location.hash == "#newPost"
-// let messageContainer = $("#broadcast-show")
-// let broadcastContainer = $("#broadcast-index-container")
-//
-// let msgId
-// let msgDesc
-// let msgUser
 
 let bField = $("#broadcast-field")
 let bContainer = $("#broadcast-index-container tbody")
@@ -72,7 +66,6 @@ let bSubmit = $("#broadcast-submit")
 
 let pp = $($("#broadcast-user")[0]);
 let pu_id = pp.data('current_id');
-console.log("pu id" + pu_id);
 
 
 // using JS
@@ -80,18 +73,6 @@ function resetHash() {
 	window.location.hash = "";
 }
 
-// function inputKeyUp() {
-// 	console.log("New post!!!!");
-// 	if(newPost && posted) {
-// 		// msgId = post_id
-// 		// msgDesc = post_desc
-// 		// msgUser = post_user
-// 		console.log("binput !" + bInput.val());
-//
-// 		channel.push("new_msg", {desc: bInput.val(), user_id: pu_id});
-// 		resetHash();
-// 	}
-// }
 
 bSubmit.off("click").on("click", event => {
   triggerPush(pu_id)
@@ -106,13 +87,11 @@ bSubmit.off("keypress").on("keypress", event => {
 
 function triggerPush(user_id){
 
-	 	console.log("binput !" + bInput.val());
     channel.push("new_msg", {user: user_id, body: bInput.val()})
     msgField.val("")
 }
 
 channel.on("new_msg", payload => {
-	console.log("AM I POSTING ON INDEX REALTIME?");
 	let messageItem = '<p>' + payload["body"] + '</p>'
 									+ '<p>' + payload["user"] + '</p>'
 	bContainer.prepend($(messageItem))
