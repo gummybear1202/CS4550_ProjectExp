@@ -14,7 +14,11 @@ We want to set up websockets so users can chat with each other and managers can 
 
 ### Experiment 3
 #### Testing out ReactJS framework 
+Attribution: https://github.com/intljusticemission/react-big-calendar
+
 In exp3/calendar-app, run the command 'npm start'
 The app can be viewed in http://localhost:3000/
 For the third experiment, we are trying out ReactJS, neither of us have a lot experience in it.
 The app is from an employee perspective and they can view their tasks and proposed shifts for the upcoming week or view all shifts by month. We also want to add the capability to view other members on your team.
+
+
