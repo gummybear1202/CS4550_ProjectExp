@@ -51,8 +51,14 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :permission, Permission.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "manager_app",
+  password: "Eithee1u",
   database: "permission_dev",
   hostname: "localhost",
   pool_size: 10
+
+# config for google auth
+  config :permission, Google,
+    client_id: "113870760288-2vqb75bgh0ckm0sjo9lj8oi2t0eaue3t.apps.googleusercontent.com",
+    client_secret: "IzZGBSBy3pmUOhCgtp_v7VCs",
+    redirect_uri: "http://localhost:4000/auth/google/callback"

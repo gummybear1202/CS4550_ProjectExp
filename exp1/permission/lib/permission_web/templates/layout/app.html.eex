@@ -7,29 +7,61 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Permission!</title>
+    <title>OAuth2/Phoenix!</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">OAuth2 Example</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="https://github.com/scrogson/oauth2_example">
+              <i class="fa fa-github"></i>
+              View on GitHub
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="jumbotron">
+      <span class="logo"></span>
+      <h2>OAuth2/Phoenix Example Application!</h2>
+      <p class="lead">
+        This is an application to show an example of how to wire up
+        <a href="https://github.com/scrogson/oauth2">OAuth2</a> with
+        <a href="https://github.com/phoenixframework/phoenix">Phoenix</a>.
+      </p>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <br>
+      <br>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
+      <iframe src="https://ghbtns.com/github-btn.html?user=scrogson&repo=oauth2_example&type=star&count=true&size=large&v=2" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+      <iframe src="https://ghbtns.com/github-btn.html?user=scrogson&repo=oauth2_example&type=watch&count=true&size=large&v=2" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 
-    </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+      <%= if @current_user do %>
+        <h2>Welcome, <%= @current_user.name %>!</h2>
+        <img src="<%= @current_user.avatar %>" class="img-circle"/>
+        <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
+      <% else %>
+        <br>
+        <br>
+
+        <a class="btn btn-primary btn-lg" href="<%= auth_path @conn, :index, "google" %>">
+          <i class="fa fa-google"></i>
+          Sign in with Google
+        </a>
+      <% end %>
+    </div>
+
+    <main role="main">
+      <%= render @view_module, @view_template, assigns %>
+    </main>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"</script>
+    <script>require("/web/static/app")</script>
   </body>
 </html>

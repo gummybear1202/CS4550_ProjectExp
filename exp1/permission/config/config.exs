@@ -17,6 +17,22 @@ config :permission, PermissionWeb.Endpoint,
   pubsub: [name: Permission.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+# config ueberauth_google
+config :ueberauth, Ueberauth,
+  providers: [
+    google: { Ueberauth.Strategy.Google, [] },
+    identity: { Ueberauth.Strategy.Identity, [
+        callback_methods: ["POST"],
+        uid_field: :username,
+        nickname_field: :username,
+      ] }
+]
+
+config :ueberauth, Ueberauth.Strategy.Google.OAuth,
+  client_id: "113870760288-2vqb75bgh0ckm0sjo9lj8oi2t0eaue3t.apps.googleusercontent.com",
+  client_secret: "IzZGBSBy3pmUOhCgtp_v7VCs",
+  redirect_uri: "http://localhost:4000/auth/google/callback"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
