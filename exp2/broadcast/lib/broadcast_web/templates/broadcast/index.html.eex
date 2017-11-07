@@ -1,4 +1,5 @@
 <h2>Dashboard Messages</h2>
+<span><%= link "New Broadcast", class: "btn btn-primary", to: broadcast_path(@conn, :new) %></span>
 
 <div class="container">
 
@@ -20,5 +21,3 @@
       </tbody>
     </table>
 </div>
-
-<span><%= link "New Broadcast", to: broadcast_path(@conn, :new) %></span>
