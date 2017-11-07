@@ -58,36 +58,47 @@ let channel = socket.channel("updates:lobby", {})
 
 var newPost = location.pathname.startsWith("/broadcasts")
 var posted = location.hash == "#newPost"
-let messageContainer = $("#messages-index")
+// let messageContainer = $("#broadcast-show")
+// let broadcastContainer = $("#broadcast-index-container")
+//
+// let msgId
+// let msgDesc
+// let msgUser
 
-let msgId
-let msgDesc
-let msgUser
+let bField = $("#broadcast-field")
+let bContainer = $("#broadcast-index")
+let bInput = $("#broadcast_desc")
+
+let pp = $($("#broadcast-user")[0]);
+let pu_id = pp.data('current_id');
+console.log("pu id" + pu_id);
+console.log("binput !" + bInput.val());
+
+
 // using JS
 function resetHash() {
 	window.location.hash = "";
 }
+console.log("post has user?" + window.post_user)
 
 function inputKeyUp() {
 	console.log("New post!!!!");
 	if(newPost && posted) {
-		msgId = post_id
+		// msgId = post_id
 		msgDesc = post_desc
-		msgUser = post_user
-		channel.push("new_msg", {id: msgId, desc: msgDesc, user_id: msgUser});
+		// msgUser = post_user
+		channel.push("new_msg", {desc: msgDesc, user_id: pu_id});
 		resetHash();
 	}
-
 }
 
 channel.on("new_msg", payload => {
 	console.log("AM I POSTING ON INDEX REALTIME?");
 	let messageItem = `<p>${payload.desc}</p>`
-	messageContainer.prepend(messageItem)
-
+	bContainer.prepend($(messageItem))
 })
 
-$(inputKeyUp)
+inputKeyUp()
 
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })

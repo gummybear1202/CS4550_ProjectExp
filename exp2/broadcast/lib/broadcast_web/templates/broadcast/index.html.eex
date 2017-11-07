@@ -2,12 +2,9 @@
 
 <div class="container">
 
-  <div id="messages-index"> 
-<%= for broadcast <- @broadcasts do %>
-    <p>
-      <%= broadcast.desc %>
-    </p>
-<% end %>
+  <div id="broadcast-index">
+
+  &nbsp;
   </div>
 </div>
 

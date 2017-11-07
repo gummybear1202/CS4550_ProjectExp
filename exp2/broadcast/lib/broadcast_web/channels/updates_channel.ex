@@ -1,5 +1,6 @@
 defmodule BroadcastWeb.UpdatesChannel do
   use BroadcastWeb, :channel
+  require Logger
 
   def join("updates:lobby", payload, socket) do
     if authorized?(payload) do
@@ -26,10 +27,12 @@ defmodule BroadcastWeb.UpdatesChannel do
     {:noreply, socket}
   end
 
-  def handle_in("new_msg", %{"id" => id, "desc" => desc, "user_id" => user_id}, socket) do 
+  intercept ["new_msg"]
+  def handle_in("new_msg", %{"id" => id, "desc" => desc, "user_id" => user_id}, socket) do
+    Logger.debug"handle new msg"
     broadcast! socket, "new_msg", %{"id" => id, "desc" => desc, "user_id" => user_id}
     {:noreply, socket}
-  end 
+  end
 
   def handle_out("new_msg", payload, socket) do
     push socket, "new_msg", payload

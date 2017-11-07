@@ -1,18 +1,31 @@
-<%= if @current_user do %>
-<script type="text/javascript">
-  window.current_Id = <%= @current_user.id %>;
-  window.post_id = <%= @broadcast.id %>;
-  window.post_desc = "<%= @broadcast.desc %>";
-  window.post_user = <%= @broadcast.user_id %>;
-</script>
-<% end %>
+<div id="broadcast-show" class="container">
+  <div class="row">
+
+    <%= if @current_user do %>
+    <div id="post-user"
+      data-current_id="<%= @current_user.id %>"
+      data-post_id = "<%= @broadcast.id %>"
+      data-post_desc = "<%= @broadcast.desc %>"
+      data-post_user = "<%= @broadcast.user_id %>">
+      &nbsp;
+    <script type="text/javascript">
+      window.current_Id = <%= @current_user.id %>;
+      window.post_id = <%= @broadcast.id %>;
+      window.post_desc = "<%= @broadcast.desc %>";
+      window.post_user = <%= @broadcast.user_id %>;
+    </script>
+
+    <% end %>
+  </div>
+</div>
+
 
 <h2>Show Broadcast</h2>
 
 <div>
 
   <p>
-    <strong><%= @broadcast.user_id %> says: </strong>
+    <%= @broadcast.user_id %> <strong>says: </strong>
     <%= @broadcast.desc %>
   </p>
 

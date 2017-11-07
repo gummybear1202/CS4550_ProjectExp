@@ -51,8 +51,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :broadcast, Broadcast.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "broadcast",
+  password: "Que5og8E",
   database: "broadcast_dev",
   hostname: "localhost",
   pool_size: 10
