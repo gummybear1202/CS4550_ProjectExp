@@ -66,39 +66,59 @@ var posted = location.hash == "#newPost"
 // let msgUser
 
 let bField = $("#broadcast-field")
-let bContainer = $("#broadcast-index")
+let bContainer = $("#broadcast-index-container tbody")
 let bInput = $("#broadcast_desc")
+let bSubmit = $("#broadcast-submit")
 
 let pp = $($("#broadcast-user")[0]);
 let pu_id = pp.data('current_id');
 console.log("pu id" + pu_id);
-console.log("binput !" + bInput.val());
 
 
 // using JS
 function resetHash() {
 	window.location.hash = "";
 }
-console.log("post has user?" + window.post_user)
 
-function inputKeyUp() {
-	console.log("New post!!!!");
-	if(newPost && posted) {
-		// msgId = post_id
-		msgDesc = post_desc
-		// msgUser = post_user
-		channel.push("new_msg", {desc: msgDesc, user_id: pu_id});
-		resetHash();
-	}
+// function inputKeyUp() {
+// 	console.log("New post!!!!");
+// 	if(newPost && posted) {
+// 		// msgId = post_id
+// 		// msgDesc = post_desc
+// 		// msgUser = post_user
+// 		console.log("binput !" + bInput.val());
+//
+// 		channel.push("new_msg", {desc: bInput.val(), user_id: pu_id});
+// 		resetHash();
+// 	}
+// }
+
+bSubmit.off("click").on("click", event => {
+  triggerPush(pu_id)
+})
+
+// press enter
+bSubmit.off("keypress").on("keypress", event => {
+  if(event.keyCode === 13) {
+    triggerPush(pu_id)
+  }
+})
+
+function triggerPush(user_id){
+
+	 	console.log("binput !" + bInput.val());
+    channel.push("new_msg", {user: user_id, body: bInput.val()})
+    msgField.val("")
 }
 
 channel.on("new_msg", payload => {
 	console.log("AM I POSTING ON INDEX REALTIME?");
-	let messageItem = `<p>${payload.desc}</p>`
+	let messageItem = '<p>' + payload["body"] + '</p>'
+									+ '<p>' + payload["user"] + '</p>'
 	bContainer.prepend($(messageItem))
 })
 
-inputKeyUp()
+//inputKeyUp()
 
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })

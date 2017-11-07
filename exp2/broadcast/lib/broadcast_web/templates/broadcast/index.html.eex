@@ -2,10 +2,23 @@
 
 <div class="container">
 
-  <div id="broadcast-index">
+    <table id="broadcast-index-container" class="table">
+      <thead>
+        <tr>
+          <th>Desc</th>
 
-  &nbsp;
-  </div>
+          <th>Id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= for b <- @broadcasts do %>
+        <tr>
+          <td><%= b.desc %></td>
+          <td><%= b.user_id %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
 
 <span><%= link "New Broadcast", to: broadcast_path(@conn, :new) %></span>

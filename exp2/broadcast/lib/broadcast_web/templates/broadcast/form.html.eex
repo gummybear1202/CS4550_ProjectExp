@@ -20,7 +20,7 @@
 
 
 
-  <div class="form-group">
+  <div id="broadcast-submit" class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -28,9 +28,9 @@ defmodule BroadcastWeb.UpdatesChannel do
   end
 
   intercept ["new_msg"]
-  def handle_in("new_msg", %{"id" => id, "desc" => desc, "user_id" => user_id}, socket) do
+  def handle_in("new_msg", payload, socket) do
     Logger.debug"handle new msg"
-    broadcast! socket, "new_msg", %{"id" => id, "desc" => desc, "user_id" => user_id}
+    broadcast! socket, "new_msg", %{user: payload["user"], body: payload["body"]}
     {:noreply, socket}
   end
 

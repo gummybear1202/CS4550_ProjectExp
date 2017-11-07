@@ -8,12 +8,12 @@
       data-post_desc = "<%= @broadcast.desc %>"
       data-post_user = "<%= @broadcast.user_id %>">
       &nbsp;
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       window.current_Id = <%= @current_user.id %>;
       window.post_id = <%= @broadcast.id %>;
       window.post_desc = "<%= @broadcast.desc %>";
       window.post_user = <%= @broadcast.user_id %>;
-    </script>
+    </script> -->
 
     <% end %>
   </div>
@@ -28,6 +28,8 @@
     <%= @broadcast.user_id %> <strong>says: </strong>
     <%= @broadcast.desc %>
   </p>
+
+
 
 </div>
 
